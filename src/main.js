@@ -8,30 +8,36 @@ import '../style/main.scss';
 // ---------------------------------------------------------------------------
 // NOTE: every react component needs a render function!!!!!
 // ---------------------------------------------------------------------------
+const makeCow = cowsay.say({ text: 'ugh' });
 class HeaderComponent extends React.Component {
   render() {
-    return (<header>
+    return (
+    <header>
       <h1>Generate Cowsay Lorem: </h1>
     </header>);
   }
 }
+// class CowComponent extends React.Component {
+//   render() {
+//     return (
+//       <pre>{ generateCow }</pre>);
+//   }
+// }
 class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      content: 'stuff',
-      message: 'generate',
+      content: cowsay.say({ text: 'click to change' }),
+      message: 'stuff',
     };
-    this.generateLorem = this.generateLorem.bind(this);
     this.generateCow = this.generateCow.bind(this);
   }
+ 
   generateCow() {
-    return cowsay.say({ text: 'poop' });
-  }
-  generateLorem() {
     this.setState(() => {
       return {
-        message: faker.lorem.words(3),
+        content: cowsay.say({ text: faker.lorem.words(3) }),
       };
     });
   }
@@ -39,11 +45,8 @@ class App extends React.Component {
     return (
       <div>
         <HeaderComponent/>
-        <h2>Generate Cowsay Lorem:</h2>
-        <p>
-          {this.state.message}
-          </p>
-        <button onClick={ this.generateLorem }>Click Me!</button>
+        <pre>{this.state.content}</pre>
+        <button onClick={ this.generateCow }>Click Me!</button>
       </div>
     );
   }
