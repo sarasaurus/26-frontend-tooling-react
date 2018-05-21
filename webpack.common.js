@@ -26,7 +26,7 @@ webpackConfig.output = {
 // to write the html
 webpackConfig.plugins = [
   new HTMLWebpackPlugin({
-    title: 'Whatever you want your app to be named!',
+    title: 'Generate Cowsay!',
   }),
 ];
 
