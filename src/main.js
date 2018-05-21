@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDom from 'react-dom'; // this is what lets us do real-deal HTML
 import faker from 'faker';
 import cowsay from 'cowsay-browser';
+// import { DRAGON, BONG, GOAT, SHEEP, ELEPHANT } from 'cowsay-browser';
 import '../style/main.scss';
 
-
+console.log('cow', cowsay);
 // ---------------------------------------------------------------------------
 // NOTE: every react component needs a render function!!!!!
 // ---------------------------------------------------------------------------
-const makeCow = cowsay.say({ text: 'ugh' });
+// const makeCow = cowsay.say({ text: 'ugh', cow:`${__dirname}/node_modules/cowsay-browser/cows/sheep.cow`});
 class HeaderComponent extends React.Component {
   render() {
     return (
@@ -17,19 +18,11 @@ class HeaderComponent extends React.Component {
     </header>);
   }
 }
-// class CowComponent extends React.Component {
-//   render() {
-//     return (
-//       <pre>{ generateCow }</pre>);
-//   }
-// }
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       content: cowsay.say({ text: 'click to change' }),
-      message: 'stuff',
     };
     this.generateCow = this.generateCow.bind(this);
   }
@@ -37,7 +30,7 @@ class App extends React.Component {
   generateCow() {
     this.setState(() => {
       return {
-        content: cowsay.say({ text: faker.lorem.words(3) }),
+        content: cowsay.say({ text: faker.lorem.words(3), f: 'meow' }),
       };
     });
   }
