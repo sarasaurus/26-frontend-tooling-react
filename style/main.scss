@@ -14,5 +14,9 @@ p,h1,h2,ul, pre, label {
 }
 h1 {
   color: $header-color;
+}
 
+div, form {
+  width: 100vw;
+  height: 50vw;
 }

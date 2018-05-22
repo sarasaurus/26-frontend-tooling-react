@@ -1,12 +1,4 @@
 require('dotenv').config();
-// module to contain all config for project
-// these files wont be transpiled! -- cannot transpile index so we use main
-// hash is updated/changed each time files are bundled, this allowsCDN to know which 'version' to use/ when file has been updated
-// here we are both bundling see line 12, and transpiling see line 13
-// almost all that we do will be JS! no HTML
-// also note that we are basically just assigning variables to different elements of the config object, could just make one giant object -- we will add a new obj for all our rules
-// REGEX: /start pattern--- \escape special character just use verbatim, pattern goes here---- $/end pattern
-
 
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
@@ -19,13 +11,13 @@ webpackConfig.entry = `${__dirname}/src/main.js`;
 webpackConfig.output = {
   filename: '[name].[hash].js',
   path: `${__dirname}/build`,
-  publicPath: process.env.CDN_URL,
+  publicPath: process.env.CDN_URL, // this is creating a fallback path if no can find it may be smart enough to go to / route anyway-- judy not sure tho, both [hash] and [name] and keywords/functions in webpack, triggering webpack magic
 };
 
 // to write the html
 webpackConfig.plugins = [
   new HTMLWebpackPlugin({
-    title: 'Generate Cowsay!',
+    title: 'Generate Cowsay!', // title is not required, its optional 
   }),
 ];
 
@@ -40,12 +32,12 @@ webpackConfig.module.rules = [
     ],
   },
   {
-    test: /\.js$/,
+    test: /\.js$/, // this is a regex expression that tells babel what to search for
     use: {
       loader: 'babel-loader', // this is transpiling
       options: {
-        presets: ['env', 'stage-0', 'react'],
-        plugins: ['transform-react-jsx-source'],
+        presets: ['env', 'stage-0', 'react'], // presets are a collection of plugins
+        plugins: ['transform-react-jsx-source'], // plugins are ONE individual thing
         cacheDirectory: true,
       },
     },

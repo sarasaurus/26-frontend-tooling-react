@@ -5,7 +5,7 @@ import cowsay from 'cowsay-browser';
 import '../style/main.scss';
 
 class HeaderComponent extends React.Component {
-  render() {
+  render() { // this idea/ pattern is common to many OOPs, here render is basically a shell for you to plug your own logic into-- many OOPs have similar shell functions that are basically intended for you to wrap your own funcitonality in, as here
     return (
     <header>
       <h1>Generate Cowsay Lorem: </h1>
@@ -45,7 +45,6 @@ class App extends React.Component {
       <div>
         <HeaderComponent/>
         <pre>{this.state.content}</pre>
-        <div>
         <label>Change the message: </label>
         <button onClick={ this.generateCow }>Click Me!</button>
         <form onSubmit={this.setType}>
@@ -58,7 +57,6 @@ class App extends React.Component {
           }
         </select>
         </form>
-        </div>
       </div>
     );
   }
