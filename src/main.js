@@ -1,15 +1,9 @@
 import React from 'react';
-import ReactDom from 'react-dom'; // this is what lets us do real-deal HTML
+import ReactDom from 'react-dom'; 
 import faker from 'faker';
 import cowsay from 'cowsay-browser';
-// import { DRAGON, BONG, GOAT, SHEEP, ELEPHANT } from 'cowsay-browser';
 import '../style/main.scss';
 
-console.log('cow', cowsay);
-// ---------------------------------------------------------------------------
-// NOTE: every react component needs a render function!!!!!
-// ---------------------------------------------------------------------------
-// const makeCow = cowsay.say({ text: 'ugh', cow:`${__dirname}/node_modules/cowsay-browser/cows/sheep.cow`});
 class HeaderComponent extends React.Component {
   render() {
     return (

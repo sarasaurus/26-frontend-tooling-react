@@ -13,7 +13,6 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const webpackConfig = module.exports = {};
 
 // one entry point
-
 webpackConfig.entry = `${__dirname}/src/main.js`;
 
 // one output point
