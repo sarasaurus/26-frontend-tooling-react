@@ -8,7 +8,7 @@ class HeaderComponent extends React.Component {
   render() { // this idea/ pattern is common to many OOPs, here render is basically a shell for you to plug your own logic into-- many OOPs have similar shell functions that are basically intended for you to wrap your own funcitonality in, as here
     return (
     <header>
-      <h1>Generate Cowsay Lorem: </h1>
+      <h1>{this.props.headerText}</h1>
     </header>);
   }
 }
@@ -43,7 +43,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <HeaderComponent/>
+        <HeaderComponent
+        headerText='welcome to the cow selector'/>
         <pre>{this.state.content}</pre>
         <label>Change the message: </label>
         <button onClick={ this.generateCow }>Click Me!</button>
