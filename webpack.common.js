@@ -13,7 +13,6 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const webpackConfig = module.exports = {};
 
 // one entry point
-
 webpackConfig.entry = `${__dirname}/src/main.js`;
 
 // one output point
@@ -26,7 +25,7 @@ webpackConfig.output = {
 // to write the html
 webpackConfig.plugins = [
   new HTMLWebpackPlugin({
-    title: 'Whatever you want your app to be named!',
+    title: 'Generate Cowsay!',
   }),
 ];
 
