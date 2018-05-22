@@ -33,13 +33,13 @@ class App extends React.Component {
     });
   }
   generateCow() {
-    const animal = this.state.animal;
+    const { animal } = this.state;
     this.setState(() => { // set state can recieve a parameter of previous state, it returns a new state property with new state, it does not mutate anything
       return {
         content: cowsay.say({ text: faker.lorem.words(3), f: animal }),
       };
     });
-  }
+  }// state is only specific to a component
   render() {
     return (
       <div>
