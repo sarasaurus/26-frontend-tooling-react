@@ -50,19 +50,21 @@ class App extends React.Component {
     return (
       <div>
         <HeaderComponent/>
-        <p>{this.state.counter}</p>
         <pre>{this.state.content}</pre>
+        <div>
+        <label>Change the message: </label>
         <button onClick={ this.generateCow }>Click Me!</button>
         <form onSubmit={this.setType}>
         <label>
-          Click update to change the cow:
+          Change the cow:
           </label>
         <select value = {this.state.value} onChange={this.setType}>
           {
-            ['meow', 'dragon', 'sheep'].map(content => <option key = { content }> { content }</option>)
+            ['meow', 'dragon', 'sheep', 'cheese', 'bunny', 'dragon-and-cow', 'chicken-and-egg', 'elephant', 'hellokitty', 'flaming-sheep', 'eyes', 'bud-frogs', 'mech-and-cow', 'moose', 'rooster', 'milk', 'moofasa', 'small', 'turkey', 'vader-koala', 'tux', 'chick', 'stegosaurus', 'squirrel'].map(content => <option key = { content }> { content }</option>)
           }
         </select>
         </form>
+        </div>
       </div>
     );
   }
