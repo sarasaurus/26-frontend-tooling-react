@@ -23,23 +23,26 @@ class App extends React.Component {
     super(props);
     this.state = {
       content: cowsay.say({ text: 'click to change' }),
-      counter: 'poop', 
+      animal: '', 
     };
     this.generateCow = this.generateCow.bind(this);
     this.setType = this.setType.bind(this);
   }
-  setType(e) {
-    const { value } = e.target;
+
+  setType(event) {
+    const { value } = event.target;
     this.setState(() => {
       return {
         content: cowsay.say({ text: faker.lorem.words(3), f: value }),
+        animal: value,
       };
     });
   }
   generateCow() {
+    const animal = this.state.animal;
     this.setState(() => {
       return {
-        content: cowsay.say({ text: faker.lorem.words(3), f: 'meow' }),
+        content: cowsay.say({ text: faker.lorem.words(3), f: animal }),
       };
     });
   }
@@ -50,11 +53,16 @@ class App extends React.Component {
         <p>{this.state.counter}</p>
         <pre>{this.state.content}</pre>
         <button onClick={ this.generateCow }>Click Me!</button>
-        <select onChange={this.setType}>
+        <form onSubmit={this.setType}>
+        <label>
+          Click update to change the cow:
+          </label>
+        <select value = {this.state.value} onChange={this.setType}>
           {
             ['meow', 'dragon', 'sheep'].map(content => <option key = { content }> { content }</option>)
           }
         </select>
+        </form>
       </div>
     );
   }
