@@ -14,7 +14,7 @@ class HeaderComponent extends React.Component {
 }
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props);// this basically allows us to initialize the 'this' property, props is react specific, super is required, state is a property of the parent we are extending from, app is a subclass of react -component, if our extended class creates a constructor, we need to call super to give our extension access to the properties of the parent obj-- ie react.component here THIS is referign to the react component--- for any property in our extension we must knit them back to this larger object
     this.state = {
       content: cowsay.say({ text: 'click to change' }),
       animal: '', 
@@ -34,7 +34,7 @@ class App extends React.Component {
   }
   generateCow() {
     const animal = this.state.animal;
-    this.setState(() => {
+    this.setState(() => { // set state can recieve a parameter of previous state, it returns a new state property with new state, it does not mutate anything
       return {
         content: cowsay.say({ text: faker.lorem.words(3), f: animal }),
       };
