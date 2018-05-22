@@ -23,10 +23,19 @@ class App extends React.Component {
     super(props);
     this.state = {
       content: cowsay.say({ text: 'click to change' }),
+      counter: 0, 
     };
     this.generateCow = this.generateCow.bind(this);
+    this.setCounter = this.setCounter.bind(this);
   }
- 
+  setCounter(e) {
+    const { value } = e.target;
+    this.setState(() => {
+      return {
+        counter: value,
+      };
+    });
+  }
   generateCow() {
     this.setState(() => {
       return {
@@ -38,8 +47,15 @@ class App extends React.Component {
     return (
       <div>
         <HeaderComponent/>
+        <p>{this.state.counter}</p>
         <pre>{this.state.content}</pre>
         <button onClick={ this.generateCow }>Click Me!</button>
+        <ul>
+          {
+            ['meow', 'dragon', 'sheep'].map(content => <li key={ content}> { content }</li>)
+          }
+        </ul>
+        <input type='number' onChange={this.setCounter} value = {this.state.counter}/>
       </div>
     );
   }
